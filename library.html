@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div id="library_container">
+    <table id="my_library_table">
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Pages</th>
+        <th>Read</th>
+        <th>Action</th>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <button id="add_book_btn">NEW BOOK</button>
+  </div>
+
+  <dialog id="add_book_dialog">
+    <div class="form_container">
+      <form action="" id="book_form">
+        <label for="title">Book Title: </label>
+        <input type="text" name="title" id="title">
+        <label for="author">Author: </label>
+        <input type="text" name="author" id="author">
+        <label for="pages">Total Pages: </label>
+        <input type="text" name="pages" id="pages">
+        <label for="read">Read? </label>
+        <input type="radio" name="read" value="true" id="read_true">
+        <label for="read_true">Read</label>
+        <input type="radio" name="read" value="false" id="read_false">
+        <label for="read_false">Not Read</label>
+        <input type="submit" value="Submit" id="submit_btn">
+        <input type="reset" value="Reset">
+        <button formmethod="dialog">Cancel</button>
+      </form>
+    </div>
+  </dialog>
+
+</body>
+<script src="script.js"></script>
+</html>
