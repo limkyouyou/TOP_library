@@ -1,10 +1,30 @@
 
 var my_library = [];
+
+/*
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
+} */
+
+class BookClass {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  toggle_read() {
+    if (this.read) {
+      this.read = false;
+      return;
+    }
+    this.read = true;
+  }
+
 }
 
 const submit_btn = book_form.querySelector("#submit_btn");
@@ -89,18 +109,18 @@ my_library_table.addEventListener('click', (event) => {
   if (event.target.classList.contains('read_btn')) {
     var idx = parseInt(event.target.id.slice(-1));
     console.log(idx);
-    console.log(my_library[idx - 1].read)
+    console.log(my_library[idx - 1].read);
+    
     var text;
     if (my_library[idx - 1].read) {
-      my_library[idx - 1].read = false;
       event.target.textContent = 'Read';
       text = 'no';
     }
     else {
-      my_library[idx - 1].read = true;
       event.target.textContent = 'Unread';
       text = 'yes';
     }
+    my_library[idx - 1].toggle_read();
     my_library_table.rows[idx].cells[3].textContent = text;
     console.log(my_library[idx - 1].read);
   }
@@ -132,7 +152,7 @@ submit_btn.addEventListener("click", (event) => {
   if (title != "" && author != "" && pages != "") {
 
     // Create a new Book object
-    const new_book = new Book(title, author, pages, read);
+    const new_book = new BookClass(title, author, pages, read);
 
     // add the new_book to the library array
     add_book(new_book);
@@ -145,7 +165,7 @@ submit_btn.addEventListener("click", (event) => {
 });
 
 // store initial books
-const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
+const hobbit = new BookClass('The Hobbit', 'J.R.R. Tolkien', 295, false);
 my_library.push(hobbit);
 
 display_books(true);
